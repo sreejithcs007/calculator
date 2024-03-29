@@ -215,6 +215,6 @@ class CalcState extends State<Calc> {
       answer = eval.toString();
     });
 
-    print(answer);
+
   }
 }
