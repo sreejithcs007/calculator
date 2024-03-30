@@ -200,15 +200,20 @@ class CalcState extends State<Calc> {
   }
 
   void equals(String text1, String oper) {
-    var num = text1;
-    num = text1.replaceAll('x', '*');
-    num = text1.replaceAll('%', '/100');
+
+    var num;
+    text1 = text1.replaceAll('x', '*');
+    text1 = text1.replaceAll('%', '/100');
+    setState(() {
+       num = text1;
+    });
+
     Parser p = Parser();
     Expression exp = p.parse(num);
 
     ContextModel cm = ContextModel();
 
-    double eval = exp.evaluate(EvaluationType.REAL, cm);
+    var eval = exp.evaluate(EvaluationType.REAL, cm);
 
     setState(() {
       answer = eval.toString();
